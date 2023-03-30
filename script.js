@@ -34,7 +34,7 @@ var bgMusicControls = true; // Show UI music control
 setTimeout(init, 1000);
 
 var odrag = document.getElementById('drag-container');
-odrag.style.animation = `zoomDown 14s linear`;
+odrag.style.animation = `zoomDown 15s linear`;
 
 var ospin = document.getElementById('spin-container');
 // var aImg = ospin.getElementsByTagName('img');
