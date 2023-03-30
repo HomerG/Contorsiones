@@ -1,0 +1,156 @@
+figure {
+  display:inline-block;
+  position:relative;
+  transition:0.15s;
+  overflow:hidden;
+  animation: flipback 0.75s ;
+  transition:1s;
+  box-shadow: 
+    0 0 5px  black,
+    0 30px 3px -3px #0A75B4,
+    0 45px 15px -18px black;
+  margin:30px 0.5em;
+}
+figure img {
+  display:block;
+}
+figure figcaption
+{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  text-align:center;
+  box-shadow:inset 0 0 0 100px rgba(0,255,00,0.5);
+  pointer-events:none;
+  transition:1s;
+  z-index:1;
+}
+figure figcaption:after {
+  content:'';
+  position:absolute;
+  z-index:0;
+  height:100%;
+  width:100%;
+  top:0%;
+  left:0%;
+  /* white */
+  background:linear-gradient(to top left,
+    rgba(255,255,255,0.3),
+    rgba(255,255,255,0.6) 25%, 
+    rgba(255,255,255,0.4) 40%, 
+    rgba(255,255,255,0.3) 55%, 
+    rgba(255,255,255,0.3)
+    );
+  /* green */
+  background:linear-gradient(to top left,
+    rgba(0,255,0,0.3),
+    rgba(0,255,0,0.6) 25%, 
+    rgba(0,255,0,0.4) 40%, 
+    rgba(0,255,0,0.2) 55%, 
+    rgba(0,255,0,0.2)
+    );
+
+
+}
+figure figcaption:before {
+  content:'';
+  padding-top:100%;
+  display:inline-block;
+  vertical-align:middle;
+}
+figure figcaption p {
+  position:relative;
+  display:inline-block;
+  vertical-align:middle;
+  max-width:95%;
+  font-size:2em;
+  font-weight:bold;
+  z-index:2;
+  transform:scale(1);
+}
+figure img, figure figcaption {
+  pointer-events:none;
+}
+figure figcaption {
+  transform:scale(0,1);
+  transition:0.25s;
+  color:white;
+  text-shadow: 
+    0 0 1px black,
+    0 0 1px black,
+    0 0 1px black,
+    0 0 1px black,
+    0 0 1px black,
+    0 0 1px black;
+}
+
+
+figure:hover figcaption {
+  animation: back 500s 1.25s;
+  transform:scale(-1,1);
+  transition:0.25s 0.25s;
+}
+figure:hover {
+  animation: flip 1s;
+  transform:scale(-1,1)
+}
+@keyframes flip {
+  50% {
+    transform:scale(0,1);
+    transform-origin:center;
+  }
+  to {
+    transform:scale(-1,1)
+  }
+}
+@keyframes flipback {
+  50% {
+    transform:scale(0,1);
+    transform-origin:center;
+  }
+  from, to
+  {
+    transform:scale(-1,1);
+    transform-origin:center;
+
+  }
+}
+@keyframes back {
+  0.01% {
+    transform:scale(-1,1);
+    transform-origin:center;
+  }
+}
+
+figure:nth-child(2) figcaption:after {
+  background-image:url(http://lorempixel.com/200/200/nature/2);
+  box-shadow:inset 0 0 0 100px rgba(0,255,00,0.5);
+}
+figure:nth-child(3) figcaption:after {
+  background-image:url(http://lorempixel.com/200/200/nature/4);
+  box-shadow:inset 0 0 0 100px rgba(0,255,00,0.5);
+}
+figure:nth-child(4) figcaption:after {
+  background-image:url(http://lorempixel.com/200/200/nature/6);
+  box-shadow:inset 0 0 0 100px rgba(0,255,00,0.5);
+}
+figure:nth-child(5) figcaption:after {
+  background-image:url(http://lorempixel.com/200/200/nature/8);  box-shadow:inset 0 0 0 100px rgba(0,255,00,0.5);
+}
+figure:nth-child(6) figcaption:after {
+  background-image:url(http://lorempixel.com/200/200/nature/10); box-shadow:inset 0 0 0 100px rgba(0,255,00,0.5);
+}
+html {
+  background:white;
+}
+body {
+  width:600px;
+  margin:0 auto;
+  padding:1em;
+  box-shadow:0 0 15px black;
+  text-align:center;
+  background:#0A75B4;
+  color:orange;
+}
