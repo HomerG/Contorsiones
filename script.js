@@ -262,10 +262,27 @@ document.onpointerdown = function (e) {
 };
 
 document.onmousewheel = function(e) {
+
+
   event.preventDefault(); // prevent scrolling the page
-  
+
   e = e || window.event;
   var d = e.wheelDelta / 20 || -e.detail;
+
+  // tY += d*1;
+  // if(tY < 1) tY = 1;
+  var new_x = -d*0.08;
+  // if (new_x < 1) new_x =1;
+  tY += new_x
+  if (tY < 1) tY = 1
+  if (tY > 30) tY = 30
+
+  // odrag.style.transform = "rotateX(" + (-tY) + "deg)";
+  odrag.style.transform = "rotateX(" + (-tY) + "deg) rotateY(" + (tX) + "deg)";
+
+  console.log("new_x: " + new_x)
+
+
   // radius += d*15;
   if (radius < 1180) {radius = 1180}
   if (radius > 2300) {radius = 2300}
@@ -277,7 +294,7 @@ document.onmousewheel = function(e) {
     var delta = Math.max(-1, Math.min(1, (event.deltaY || -event.wheelDelta))); // get the scroll direction
     perspective += delta * 20; // change the perspective by 1000 units per scroll step
     console.log("Perspective: " + perspective)
-    if (perspective < 100 ) perspective = 100;
+    if (perspective < 140 ) perspective = 140;
     // if (perspective > 3000 ) perspective = 3000;
     document.body.style.perspective = perspective + "em"; // update the perspective of the body element
   }
