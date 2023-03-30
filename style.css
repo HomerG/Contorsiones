@@ -362,6 +362,8 @@ a, a:link, a:visited {
   top: 50%;
   transform: translate(50%, -50%) rotate(-90deg);
   transition: opacity .15s;
+  z-index: 998;
+
 }
 
 #past-websites-container {
@@ -370,6 +372,8 @@ a, a:link, a:visited {
   top: 50%;
   transform: translate(-50%, -50%) rotate(-90deg);
   transition: opacity .15s;
+  z-index: 998;
+
 }
 
 .past-website {
@@ -380,6 +384,8 @@ a, a:link, a:visited {
   padding-right: 2px;
   padding-bottom: 2px;
   font-size: 20px;
+  z-index: 998;
+
 
 }
 
