@@ -274,7 +274,7 @@ document.onmousewheel = function(e) {
   var new_x = -d*0.08;
   // if (new_x < 1) new_x =1;
   tY += new_x
-  if (tY < 1) tY = 1
+  if (tY < 2) tY = 2
   if (tY > 30) tY = 30
 
   // odrag.style.transform = "rotateX(" + (-tY) + "deg)";
