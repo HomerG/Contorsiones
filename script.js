@@ -6,11 +6,11 @@
 
 
 // You can change global variables here:
-var radius = 1550; // how big of the radius
+var radius = 1190; // how big of the radius
 var perspective = 5000;
 var autoRotate = false; // auto rotate or not
 var rotateSpeed = -60; // unit: seconds/360 degrees
-var multiplier = 1.5
+var multiplier = 1.1
 var imgWidth = 120*multiplier; // width of images (unit: px)
 var imgHeight = 170*multiplier; // height of images (unit: px)
 // var imgWidth = 206; // width of images (unit: px)
@@ -34,6 +34,8 @@ var bgMusicControls = true; // Show UI music control
 setTimeout(init, 1000);
 
 var odrag = document.getElementById('drag-container');
+odrag.style.animation = `zoomDown 14s linear`;
+
 var ospin = document.getElementById('spin-container');
 // var aImg = ospin.getElementsByTagName('img');
 var aImg = ospin.getElementsByClassName('card');
@@ -66,8 +68,8 @@ ground.style.width = radius * 3 + "px";
 ground.style.height = radius * 3 + "px";
 
 function init(delayTime) {
-  odrag.style.animation = `zoomDown 14s linear`;
-  odrag.classList.add('drag-container-init');
+  // odrag.style.animation = `zoomDown 14s linear`;
+  // odrag.classList.add('drag-container-init');
 
 
   for (var i = 0; i < aEle.length; i++) {
@@ -102,7 +104,7 @@ function init_mouse(delayTime) {
 function applyTranform(obj) {
   // Constrain the angle of camera (between 0 and 180)
   if(tY > 15) tY = 15;
-  if(tY < 4) tY = 4;
+  if(tY < 1) tY = 1;
 
   // Apply the angle
   // obj.style.transform = "rotateX(" + (-tY) + "deg) rotateY(" + (tX) + "deg)";
@@ -263,7 +265,8 @@ document.onmousewheel = function(e) {
   e = e || window.event;
   var d = e.wheelDelta / 20 || -e.detail;
   radius += d*15;
-  if (radius < 1550) {radius = 1550}
+  if (radius < 1190) {radius = 1190}
+  if (radius > 2500) {radius = 2500}
   else {
     init(1);
     console.log(radius)
@@ -271,7 +274,8 @@ document.onmousewheel = function(e) {
     event.preventDefault(); // prevent scrolling the page
     var perspective = parseInt(document.body.style.perspective) || 400; // get the current perspective or use the default value
     var delta = Math.max(-1, Math.min(1, (event.deltaY || -event.wheelDelta))); // get the scroll direction
-    perspective += delta * 25; // change the perspective by 1000 units per scroll step
+    perspective += delta * 50; // change the perspective by 1000 units per scroll step
+    if (perspective < 1000 ) perspective = 1000;
     document.body.style.perspective = perspective + "em"; // update the perspective of the body element
   }
 
