@@ -363,7 +363,10 @@ a, a:link, a:visited {
   transform: translate(50%, -50%) rotate(-90deg);
   transition: opacity .15s;
   z-index: 998;
-
+  background-color: hsl(196.53deg 100% 20%);
+  color: #c0d9d9!important;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 #past-websites-container {
