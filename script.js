@@ -290,7 +290,7 @@ document.onmousewheel = function(e) {
     init(1);
     console.log(radius)
 
-    var perspective = parseInt(document.body.style.perspective) || 400; // get the current perspective or use the default value
+    var perspective = parseInt(document.body.style.perspective) || 180; // get the current perspective or use the default value
     var delta = Math.max(-1, Math.min(1, (event.deltaY || -event.wheelDelta))); // get the scroll direction
     perspective += delta * 20; // change the perspective by 1000 units per scroll step
     console.log("Perspective: " + perspective)
