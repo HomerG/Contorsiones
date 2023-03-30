@@ -201,7 +201,7 @@ function playSpin(yes) {
 var sX, sY, nX, nY, desX = 0,
     desY = 0,
     tX = 0,
-    tY = 5;
+    tY = 7;
 
 // auto spin
 if (autoRotate) {
@@ -232,7 +232,7 @@ document.onpointerdown = function (e) {
     desX = nX - sX;
     desY = nY - sY;
     tX += desX * 0.05;
-    tY += desY * 0.005;
+    tY += desY * 0.01;
     // console.log(tX);
     checkFace();
     applyTranform(odrag);
@@ -245,7 +245,7 @@ document.onpointerdown = function (e) {
       desX *= 0.95;
       desY *= 0.95;
       tX += desX * 0.05;
-      tY += desY * 0.005;
+      tY += desY * 0.01;
       // console.log(tX);
       checkFace();
       applyTranform(odrag);
@@ -262,20 +262,23 @@ document.onpointerdown = function (e) {
 };
 
 document.onmousewheel = function(e) {
+  event.preventDefault(); // prevent scrolling the page
+  
   e = e || window.event;
   var d = e.wheelDelta / 20 || -e.detail;
-  radius += d*15;
-  if (radius < 1190) {radius = 1190}
-  if (radius > 2500) {radius = 2500}
+  // radius += d*15;
+  if (radius < 1180) {radius = 1180}
+  if (radius > 2300) {radius = 2300}
   else {
     init(1);
     console.log(radius)
 
-    event.preventDefault(); // prevent scrolling the page
     var perspective = parseInt(document.body.style.perspective) || 400; // get the current perspective or use the default value
     var delta = Math.max(-1, Math.min(1, (event.deltaY || -event.wheelDelta))); // get the scroll direction
-    perspective += delta * 50; // change the perspective by 1000 units per scroll step
-    if (perspective < 1000 ) perspective = 1000;
+    perspective += delta * 20; // change the perspective by 1000 units per scroll step
+    console.log("Perspective: " + perspective)
+    if (perspective < 100 ) perspective = 100;
+    // if (perspective > 3000 ) perspective = 3000;
     document.body.style.perspective = perspective + "em"; // update the perspective of the body element
   }
 
