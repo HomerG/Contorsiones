@@ -1,3 +1,6 @@
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
+
+
 * {
   margin: 0;
   padding: 0;
@@ -195,6 +198,60 @@ body2{
           transform: translate(-50%,-50%) rotateX(90deg);
 }
 
+#MainMenu{
+  width: 100%;
+  margin-top: 25%;
+  font-family: helvetica, sans-serif;
+  font-weight: bold;;
+  font-size: 30px;
+}
+
+#MainMenu ul{
+  list-style-type: none;
+
+}
+
+#MainMenu li {
+  /*margin-top: 30%;*/
+}
+
+.wrapper {
+  height: 100vh;
+  /*This part is important for centering*/
+  display: grid;
+  place-items: center;
+}
+
+.typing-demo {
+  width: 10ch;
+  animation: typing 3s steps(10), blink 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 5em;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+
+#MainMenu h1 {
+  font-family: 'Press Start 2P', cursive;
+  text-decoration: none;
+  /*color: #eee;*/
+  text-align: center;
+}
+
+
 #title p {
   margin-bottom: 10%;
 }
@@ -325,7 +382,7 @@ body2{
 #lang-toggle {
   position: fixed;
   top: 20px;
-  right: 20px;
+  left: 20px;
   z-index: 1000;
 }
 
@@ -337,16 +394,24 @@ body2{
 .sans, .sans > a {
   font-family: helvetica, sans-serif;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 22px;
   text-transform: uppercase;
   text-decoration: none;
 }
 
 #name {
-  color: var(--highlight-color);
+  /*color: var(--highlight-color);*/
+  color: #c0d9d9!important;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 25px;
   position: fixed;
+  background-color: hsl(196.53deg 100% 20%);
+  padding-left: 0.2%;
+  padding-right: 0.5%;
+  padding-top: 0.1%;
+  padding-bottom: 0.1%;
+  top: 20px;
+  right: 20px;
 }
 
 a, a:link, a:visited {
@@ -378,6 +443,16 @@ a, a:link, a:visited {
   z-index: 998;
 
 }
+#past-websites-container2 {
+  position: fixed;
+  left: 25px;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  transition: opacity .15s;
+  z-index: 998;
+  margin-left: 2%;
+
+}
 
 .past-website {
   background-color: hsl(196.53deg 100% 20%);
@@ -386,9 +461,179 @@ a, a:link, a:visited {
   padding-left: 2px;
   padding-right: 2px;
   padding-bottom: 2px;
-  font-size: 20px;
+  font-size: 26px;
   z-index: 998;
-
-
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-left: 5px;
 }
 
+/* HOVER COLOR */
+
+a svg:hover #facebook,
+a svg:hover #instagram {
+  fill: #fff;
+}
+
+/* GENERAL STYLES */
+
+
+article {
+  width: 100%;
+  margin: 60px auto;
+  text-align: center;
+  zoom: 2;
+}
+a {
+  outline: none;
+  border: 0;
+  text-decoration: none;
+}
+a svg #facebook,
+a svg #instagram {
+  transition: 200ms;
+  transition-timing-function: ease-in-out;
+  -webkit-transition: 200ms;
+  -webkit-transition-timing-function: ease-in-out;
+}
+
+#contact {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-bottom: 0.5%;
+  margin-right: 0.5%;
+}
+
+/* Video Modal
+-----------------------------------------*/
+.video-modal,
+.video-modal .overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3000;
+}
+.video-modal {
+  overflow: hidden;
+  position: fixed;
+  opacity: 0.0;
+
+  -webkit-transform: translate(500%,0%);
+  transform: translate(500%,0%);
+
+  -webkit-transition: -webkit-transform 0s linear 0s;
+  transition: transform 0s linear 0s;
+
+
+  /* using flexbox for vertical centering */
+
+  /* Flexbox display */
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+
+  /* Vertical alignment */
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.video-modal .overlay {
+  z-index: 0;
+  background: rgba(13,1,61,0.82); /* overlay color */
+
+  opacity: 0.0;
+
+  -webkit-transition: opacity 0.2s ease-out 0.05s;
+  transition: opacity 0.2s ease-out 0.05s;
+}
+
+
+.video-modal-content {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  z-index: 1;
+
+  margin: 0 auto;
+
+  overflow-y: visible;
+
+  background: #000;
+
+  width: calc(100% - 12em);
+  height: 0;
+  padding-top: calc((100% - 12em) * 0.5625); /* 16:9 calc */
+}
+
+/* Scaling to fit within the current Viewport size:
+   When viewport aspect ratio is greater than 16:9
+   work off the height instead of the width for calc */
+@media (min-aspect-ratio: 16/9) {
+  .video-modal-content {
+    width: 0;
+    height: calc(100vh - 10em);
+    padding-top: 0;
+    padding-left: calc((100vh - 10em) * 1.7778); /* 16:9 calc */
+  }
+}
+
+/* Mobile Layout Tweaks - side margins reduced */
+@media (max-width: 640px) {
+  .video-modal-content {
+    width: calc(100% - 1em);
+    padding-top: calc((100% - 1em) * 0.5625); /* 16:9 calc */
+  }
+}
+
+/* modal close button */
+.close-video-modal {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -40px;
+
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* set the iframe element to stretch to fit its parent element */
+iframe#youtube {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+
+  background: #000;
+  box-shadow: 0px 2px 16px rgba(0,0,0,0.5);
+}
+
+/* show the modal:
+   add class to the body to reveal */
+.show-video-modal .video-modal {
+  opacity: 1.0;
+
+  transform: translate(0%,0%);
+  -webkit-transform: translate(0%,0%);
+}
+.show-video-modal .video-modal .overlay {
+  opacity: 1.0;
+}
+.show-video-modal .video-modal-content {
+  transform: translate(0%,0%);
+  -webkit-transform: translate(0%,0%);
+}
