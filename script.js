@@ -3,14 +3,22 @@
 // Github verson (1 file .html): https://github.com/HoangTran0410/3DCarousel/blob/master/index.html
 
 // Give me a coffee <3 https://github.com/HoangTran0410/HoangTran0410/blob/main/DONATE.md
+    
+if (document.documentElement.clientWidth < 1100){
+  // var radius = 2690; // how big of the radius
+  var radius = 1190; // how big of the radius
+  var multiplier = 1.1
+}
+else{
+  var radius = 1190; // how big of the radius
+  var multiplier = 1.1
 
 
+}
 // You can change global variables here:
-var radius = 1190; // how big of the radius
 var perspective = 5000;
 var autoRotate = false; // auto rotate or not
 var rotateSpeed = -60; // unit: seconds/360 degrees
-var multiplier = 1.1
 var imgWidth = 120*multiplier; // width of images (unit: px)
 var imgHeight = 170*multiplier; // height of images (unit: px)
 // var imgWidth = 206; // width of images (unit: px)
@@ -105,7 +113,8 @@ function init_mouse(delayTime) {
 
 function applyTranform(obj) {
   // Constrain the angle of camera (between 0 and 180)
-  if(tY > 15) tY = 15;
+  // if(tY > 15) tY = 15;
+  if(tY > 50) tY = 50;
   if(tY < 1) tY = 1;
 
   // Apply the angle
@@ -282,8 +291,8 @@ document.onmousewheel = function(e) {
   var new_x = -d*0.08;
   // if (new_x < 1) new_x =1;
   tY += new_x
-  if (tY < 2) tY = 2
-  if (tY > 30) tY = 30
+  if (tY < 1) tY = 1
+  if (tY > 50) tY = 50
 
   // odrag.style.transform = "rotateX(" + (-tY) + "deg)";
   odrag.style.transform = "rotateX(" + (-tY) + "deg) rotateY(" + (tX) + "deg)";
@@ -298,17 +307,40 @@ document.onmousewheel = function(e) {
     // init(1);
     console.log(radius)
 
-    var perspective = parseInt(document.body.style.perspective) || 180; // get the current perspective or use the default value
+    // var perspective = parseInt(document.body.style.perspective) // get the current perspective or use the default value
     var delta = Math.max(-1, Math.min(1, (event.deltaY || -event.wheelDelta))); // get the scroll direction
-    perspective += delta * 20; // change the perspective by 1000 units per scroll step
-    console.log("Perspective: " + perspective)
     console.log("radius " + radius)
-    if (perspective < 140 ) perspective = 140;
-    // if (perspective > 1200 ) perspective = 1200;
-    // if (perspective > 3000 ) perspective = 3000;
-    document.body.style.perspective = perspective + "em"; // update the perspective of the body element
+  }
+
+  // handling zoom 
+  if (document.documentElement.clientWidth < 1100){
+    console.log("mini")
+    var element = document.getElementById("body2");
+    var perspective = parseInt(element.style.perspective) || 180; // get the current perspective or use the default value
+    console.log("PerspectivE: " + perspective)
+
+    perspective += new_x*20
+    console.log("Perspective: " + perspective)
+
+    if (perspective < 90 ) perspective = 90;
+    if (perspective > 300 ) perspective = 300;
+    
+    if (element) {
+      element.style.perspective = perspective + "em"; // Change the perspective value as needed
+    }
 
   }
+  else{
+    var perspective = parseInt(document.body.style.perspective) || 180; // get the current perspective or use the default value
+    perspective += new_x*20
+    if (perspective < 100 ) perspective = 100;
+    if (perspective > 1000 ) perspective = 1000;
+    document.body.style.perspective = perspective + "em"; // update the perspective of the body element
+    
+
+  }
+
+
 
   // console.log("screen WIDTH: " + document.documentElement.clientWidth)
 
