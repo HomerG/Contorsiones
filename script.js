@@ -67,6 +67,8 @@ var ground = document.getElementById('ground');
 ground.style.width = radius * 3 + "px";
 ground.style.height = radius * 3 + "px";
 
+var scale = 0;
+
 function init(delayTime) {
   // odrag.style.animation = `zoomDown 14s linear`;
   // odrag.classList.add('drag-container-init');
@@ -269,6 +271,12 @@ document.onmousewheel = function(e) {
   e = e || window.event;
   var d = e.wheelDelta / 20 || -e.detail;
 
+  var max_scale = 4;
+
+  // var zoomContainer = document.body2;
+  var zoomContainer = document.getElementById('body2');
+
+
   // tY += d*1;
   // if(tY < 1) tY = 1;
   var new_x = -d*0.08;
@@ -287,17 +295,33 @@ document.onmousewheel = function(e) {
   if (radius < 1180) {radius = 1180}
   if (radius > 2300) {radius = 2300}
   else {
-    init(1);
+    // init(1);
     console.log(radius)
 
     var perspective = parseInt(document.body.style.perspective) || 180; // get the current perspective or use the default value
     var delta = Math.max(-1, Math.min(1, (event.deltaY || -event.wheelDelta))); // get the scroll direction
     perspective += delta * 20; // change the perspective by 1000 units per scroll step
     console.log("Perspective: " + perspective)
+    console.log("radius " + radius)
     if (perspective < 140 ) perspective = 140;
+    // if (perspective > 1200 ) perspective = 1200;
     // if (perspective > 3000 ) perspective = 3000;
     document.body.style.perspective = perspective + "em"; // update the perspective of the body element
+
   }
+
+  // console.log("screen WIDTH: " + document.documentElement.clientWidth)
+
+  // if (document.documentElement.clientWidth < 1100){
+  //   console.log("hello")
+  //   scale += d*0.005;
+  //   if (scale >1) {scale = 1}
+  //   if (scale < 0) {scale = 0}
+  //   console.log("scale: " + scale)
+  //   var current_scale = max_scale*scale + 1
+
+  //   zoomContainer.style.transform = `scale(${current_scale})`;
+  // }
 
 };
 
